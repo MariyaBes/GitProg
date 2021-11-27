@@ -15,7 +15,7 @@
     <v-divider></v-divider>
 
     <v-list dense>
-        <v-list-item-group color="primary">
+        <v-list-item-group color="green">
           <v-list-item
           v-for="link in links" 
           :key="link.title"
@@ -31,7 +31,7 @@
         </v-list-item-group>
     </v-list>
   </v-navigation-drawer> 
-  <v-app-bar app dark color="primary">
+  <v-app-bar app dark color="green">
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
