@@ -7,23 +7,27 @@
 					Login
 				</v-toolbar>
 				<v-card-text>
-					<v-form>
+					<v-form v-model="valid" ref="form" validation>
 						<v-text-field
 						prepend-icon="mdi-account"
 						name="email"
 						label="Email"
-						type="email"></v-text-field>
+						type="email"
+						v-model="email"
+						:rules="emailRules" ></v-text-field>
 						<v-text-field
                         prepend-icon="mdi-lock" 
                         name="password" 
                         label="Password" 
-                        type="password">
+                        type="password"
+						v-model="password"
+						:rules="passwordRules">
                         </v-text-field>
 					</v-form>
 				</v-card-text>
 				<v-card-actions>
 					<v-spacer></v-spacer>
-					<v-btn color="green">Login</v-btn>
+					<v-btn color="green" @click="onSubmit" :disabled="!valid">Login</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-flex>
@@ -35,7 +39,31 @@
 export default {
 	data () { 
 		return {
-		} 	
+			valid: false,
+			email: "",
+			password: "",
+			emailRules: [
+			v => !!v || 'E-mail is required',
+			v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+			],
+			passwordRules: [
+			v => !!v || 'Password is required',
+			v => (v && v.length >= 6) || 'Password must be more or equel than 6 characters'
+			]
+		} 
+	},
+	methods: {
+		onSubmit(){
+			if (this.$refs.form.validate()){
+				const user = {
+					email: this.email,
+					password: this.password
+				}
+				console.log(user)
+			}
+		}
 	}
+
+
 } 
 </script>
