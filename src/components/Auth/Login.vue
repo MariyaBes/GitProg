@@ -3,7 +3,7 @@
 		<v-layout align-center justify-center> 
 		<v-flex xs12 sm8 md8>
 			<v-card class="elevetion-12">
-				<v-toolbar dark color="green">
+				<v-toolbar dark color="#142F43">
 					Login
 				</v-toolbar>
 				<v-card-text>
@@ -27,7 +27,7 @@
 				</v-card-text>
 				<v-card-actions>
 					<v-spacer></v-spacer>
-					<v-btn color="green" @click="onSubmit" :disabled="!valid">Login</v-btn>
+					<v-btn dark color="#142F43" @click="onSubmit" :disabled="!valid">Login</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-flex>
