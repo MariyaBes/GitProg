@@ -5,41 +5,33 @@
 					<h1 class="text--secondary mb-3 mt-3">Orders</h1>
 	<v-card
     class="mx-auto"
-    max-width="400"
+    max-width="300"
     tile
   >
-    <v-list rounded>
-
-      <v-list-item-group
-        v-model="selectedItem"
-        color="#FC997C"
-      >
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
-          </v-list-item-icon>
+    <v-list subheader
+    two-line
+    flat>
+        <v-list-item v-for="order in orders" :key="order.id">
+          
           <v-list-item-content>
-            <v-list-item-title v-text="item.text"></v-list-item-title>
-			<v-list-item-subtitle>Allow notifications</v-list-item-subtitle>
+            <v-list-item-title>{{order.name}}</v-list-item-title>
+			<v-list-item-subtitle>{{order.phone}}</v-list-item-subtitle>
           </v-list-item-content>
 
 	<v-list-item-action>
 		<v-checkbox
-		:input-value="active"
-		color="#B85252">
+		:input-value="order.done"
+		
+		color="#B85252"
+    @click="markDone(order)">
 		</v-checkbox>
     </v-list-item-action>
 
 	<v-list-item-action>
-		<v-btn class="#F58840">Open</v-btn>
+		<v-btn class="#F58840" :to="'/ad/' + order.adId">Open</v-btn>
     </v-list-item-action>
 
-
         </v-list-item>
-      </v-list-item-group>
     </v-list>
   </v-card>
 		</v-flex>
@@ -49,11 +41,38 @@
 
 <script>
   export default {
-    data: () => ({
-      selectedItem: 1,
-      items: [
-        { text: 'Notifications', icon: 'mdi-bell-ring' },
-      ],
-    }),
+    data() {
+      return{
+        orders:[
+          {
+            id:"123",
+            name:"Lida",
+            phone:"+79787314451",
+            adId:"1",
+            done:true
+          },
+          {
+            id:"124",
+            name:"Mark",
+            phone:"+79789544164",
+            adId:"2",
+            done:true
+          },
+          {
+            id:"125",
+            name:"Froy",
+            phone:"+79780714777",
+            adId:"3",
+            done:true
+          }
+        ]
+      }
+    },
+    mathods:{
+      markDone(order){
+        order.done=!order.done
+        console.log(order.done)
+      }
+    } 
   }
 </script>
