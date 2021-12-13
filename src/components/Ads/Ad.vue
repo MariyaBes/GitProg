@@ -29,7 +29,7 @@
 
 					<v-layout row>
 						<v-flex xs12>
-							<img scr="https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg" height="150" class="mt-3">
+							<img scr="https://wallpapershome.ru/images/pages/pic_h/22770.jpg" height="150" class="mt-3">
 						</v-flex>
 					</v-layout>
 					
