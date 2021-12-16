@@ -5,7 +5,7 @@
 			<v-flex xs14>
 				<v-carousel>
 					<v-carousel-item
-						v-for="ad in ads"
+						v-for="ad in promoAds"
 						:key="ad.id"
 						:src="ad.src"
 					>
@@ -50,55 +50,19 @@
 
 <script>
 export default {
-	data () { 
-		return {
-			ads:[
-			{
-				title:"First",
-				desc:"First Desc",
-				promo: true,
-				src: "https://wallpapershome.ru/images/pages/pic_h/22770.jpg",
-				id:"1"
-			},
-			{
-				title:"Second",
-				desc:"Second Desc",
-				promo: true,
-				src: "https://wallpapershome.ru/images/pages/pic_h/13301.jpg",
-				id:"2"
-			},
-			{
-				title:"Third",
-				desc:"Thitd Desc",
-				promo: true,
-				src: "https://wallpapershome.ru/images/pages/pic_h/23314.jpg",
-				id:"3"
-			},
-			{
-				title:"Fouth",
-				desc:"Fouth Desc",
-				promo: true,
-				src: "https://i1.wp.com/mynexttablet.com/wp-content/uploads/2021/09/samsung-galaxy-tab-s7-fe-tablet-comparison.jpg?fit=1920%2C1080&ssl=1",
-				id:"4"
-			},
-			{
-				title:"Fifth",
-				desc:"Fifth Desc",
-				promo: true,
-				src: "https://cdn.andro4all.com/files/2021/10/Diseno-de-la-Xiaomi-Pad-5.jpg",
-				id:"5"
-			},
-			{
-				title:"Sixth",
-				desc:"Sixth Desc",
-				promo: true,
-				src: "https://www.iphones.ru/wp-content/uploads/2021/10/ipad-mini-6-review-iphonesru-10.jpg",
-				id:"6"
-			}
-			]
-		} 	
+	computed: {
+		promoAds() {
+			console.log ("Запрос с экрана")
+			return this.$store.getters.promoAds
+		},
+		ads() {
+			return this.$store.getters.ads
+		}
 	}
-} 
+}
+
+	
+
 </script>
 
 <style scoped>

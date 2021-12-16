@@ -2,14 +2,15 @@
 	<v-container>
 		<v-layout row> 
 			<v-flex xs12>
+				<h1>{{ id }}</h1>
 				<v-card class="mt-5">
 							<v-img 
 							height="400px"
-							src="https://wallpapershome.ru/images/pages/pic_h/22770.jpg">
+							:src="ad.src">
 							</v-img>
 							<v-card-text>
-								<h1 class="text--primary mb-3">Galaxy Tab A7</h1>
-								<p>Elegant design, amazing entertainment system and high performance turn the Galaxy Tab A7 tablet into an indispensable assistant. Enjoy your favorite activities to the fullest and share the best moments of your life. Learn, explore and be inspired.</p>
+								<h1 class="text--primary mb-3">{{ ad.title }}</h1>
+								<p>{{ad.desc}}</p>
 							</v-card-text>
 							<v-card-actions>
 								<v-spacer></v-spacer>
@@ -24,12 +25,11 @@
 
 <script>
 export default {
-	data () { 
-		return {
-			valid:false,
-			title:"",
-			description:"",
-			promo: false
+	props: ['id'],
+	computed: { 
+		ad() {
+			const id = this.id
+			return this.$store.getters.adById(id)
 		} 	
 	}
 }
