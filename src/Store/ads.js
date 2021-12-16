@@ -49,6 +49,8 @@ export default{
     actions: {},
     getters: {
         ads(state) {
+			console.log ("В state проверяем adds")
+			console.log (state.ads)
             return state.ads
         },
         promoAds(state) {

@@ -15,12 +15,6 @@ export default new Router({
 		component: Home
 	},
 
-    {
-		path:"/ad/:id",
-		name:"ad",
-		component:Ad
-	},
-
 	{
 		path:"/list",
 		name:"list",
