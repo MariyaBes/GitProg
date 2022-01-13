@@ -25,7 +25,7 @@
 				<v-card>
 					<v-img
 					:src="ad.src"
-					height="280px"
+					height="300px"
 					></v-img>
 					<v-card-title primary-title>
 					<div>
