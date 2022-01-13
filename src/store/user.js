@@ -14,8 +14,12 @@ export default {
             commite('clearError')
             commite('setLoading', true)
             fb.auth().createUserWithEmailAndPassword(email, password).than(response => {
-                console.log(response.user.uid)
                 commite('setUser', new User(response.user.uid))
+                commite('setLoading', false)
+            }).catch(error => {
+                commite('setLoading', false)
+                commite('setError', error.message)
+                throw error
             })
         }
     },
