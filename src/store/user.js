@@ -21,6 +21,20 @@ export default {
                 commite('setError', error.message)
                 throw error
             })
+        },
+        async loginUser({commite}, {email, password}){
+            commite('clearError')
+            commite('setLoading', true)
+            try {
+                const response = await
+                fb.auth().signInWithEmailAndPassword(email, password)
+                    commite('setUser', new User(response.user.uid))
+                    commite('setLoading', false)
+            } catch(error) {
+                commite('setLoading', false)
+                commite('setError', error.message)
+                throw error
+            }
         }
     },
 	getters: {
