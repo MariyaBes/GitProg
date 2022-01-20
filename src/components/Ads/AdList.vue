@@ -2,7 +2,7 @@
     <v-container>
         <v-layout row> 
             <v-flex xs12 sm6 offset-sm3>
-                <h1 class="text--secondary mb-3 mt-3">My ads</h1>
+                <h1 class="text--secondary mb-5 mt-5">My ads</h1>
               <v-card 
                   class="elevation-10 mb-5" v-for="ad in myAds" :key="ad.id">
                   <v-layout row>
@@ -11,7 +11,7 @@
                         </v-flex>
                        <v-flex xs8 class="pr-3">
                           <v-card-text>
-                             <h2 class="text-primary mb-3">{{ad.title}}</h2>
+                             <h2 class="text-primary mb-5">{{ad.title}}</h2>
                              <p>{{ad.desc}}</p>
                           </v-card-text>
                             <v-card-actions>

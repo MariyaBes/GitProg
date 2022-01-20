@@ -4,14 +4,14 @@
             <v-flex xs12 sm6 offset-sm3>
                 <h1 class="text--secondary mb-3 mt-3">Create Ad</h1>
                 <v-form v-model="valid" ref="form" validation>
-                  <v-text-field color="#800080"
+                  <v-text-field color="#FC9918"
                      name="title" 
                      label="Ad Title" 
                      type="text" 
                      v-model="title"
                      :rules="[ v => !!v || 'Title is required']">
                  </v-text-field>
-                  <v-textarea color="#800080"  
+                  <v-textarea color="#FC9918"  
                      name="description" 
                      label="Ad Description" 
                      type="text" 
@@ -39,7 +39,7 @@
 
                 <v-layout  row> 
                   <v-flex xs12>
-                      <v-switch v-model="promo" color="#800080" label="Ad to Promo?"></v-switch>
+                      <v-switch v-model="promo" color="#FC9918" label="Ad to Promo?"></v-switch>
                     </v-flex>
                 </v-layout>
 

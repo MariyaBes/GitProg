@@ -8,7 +8,7 @@
 							:src="ad.src">
 							</v-img>
 							<v-card-text>
-								<h1 class="text--primary mb-3"> {{ ad.title }} </h1>
+								<h1 class="text--primary mb-5"> {{ ad.title }} </h1>
 								<p> {{ ad.desc }} </p>
 							</v-card-text>
 							<v-card-actions>
