@@ -45,7 +45,13 @@
 
                 <v-layout  row> 
                   <v-flex xs12>
-                      <v-btn color="success" @click="createAd">Create Ad</v-btn>
+                      <v-spacer>
+                      </v-spacer>
+                      <v-btn color="success" 
+                      @click="createAd"
+                      :loading="loading"
+                      :disabled:="!valid || loading"
+                      >Create Ad</v-btn>
                   </v-flex>
                 </v-layout>
             </v-flex>
@@ -63,6 +69,11 @@ export default {
             promo: false
         } 	
     },
+    computed: {
+        loading() {
+            return this.$store.getters.loading
+        }
+    },
     methods: {
       createAd(){
         if (this.$refs.form.validate()){
@@ -73,6 +84,10 @@ export default {
                 src: "https://wallpapershome.ru/images/pages/pic_h/23676.jpg"
                 }
         this.$store.dispatch("createAd", ad)
+        .then(() => {
+            this.$router.push("/list")
+        })
+        .catch(() => {})
     }
    }
   }

@@ -1,3 +1,5 @@
+import fb from 'firebase'
+
 export default{
     state:{
         ads:[
@@ -52,8 +54,32 @@ export default{
 	},
     actions: {
 		createAd({commit},payload){
-			payload.id = Math.random()
-			commit('createAd', payload)
+            payload.id = Math.random()
+            commit('createAd', payload)
+        },
+		async createAds ({commit, getters}, payload){
+			commit('clearError')
+			commit('setLoading', true)
+			try {
+				const newAd = newAd(
+					payload.title, 
+					payload.desc, 
+					getters.user.id, 
+					payload.scr, 
+					payload.promo, 
+					payload.id
+					)
+				const fbValue = await fb.database().ref('ads').push(newAd)
+				commit('setLoading', false)
+				commit('createAd', {
+					...newAd,
+					id: fbValue.key
+				})
+			} catch (error) {
+				commit ('setError', error.message)
+				commit ('setLoading', false)
+				throw error
+			}
 		}
 	},
     getters: {

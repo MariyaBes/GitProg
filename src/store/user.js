@@ -14,9 +14,9 @@ export default {
             commit('clearError')
             commit('setLoading', true)
             try {
-                const responce = await
+                const response = await
                 fb.auth().createUserWithEmailAndPassword(email,password)
-                commit('setUser', new User(responce.uid))
+                commit('setUser', new User(response.user.uid))
                 commit('setLoading', false)
             } catch(error) {
                 commit('setLoading', false)
@@ -28,9 +28,9 @@ export default {
             commit('clearError')
             commit('setLoading', true)
             try {
-                const responce = await
+                const response = await
                 fb.auth().signInWithEmailAndPassword(email,password)
-                commit('setUser', new User(responce.uid))
+                commit('setUser', new User(response.user.uid))
                 commit('setLoading', false)
             } catch(error) {
                 commit('setLoading', false)
@@ -41,12 +41,12 @@ export default {
         logoutUser ({commit}) {
             fb.auth().signOut()
             commit('setUser', null)
+        },
+        autoLoginUser({commit}, uid){
+            commit('setUser', new User(uid))
         }
     },
 	getters: {
-        user(state) {
-            return state.user
-        },
         isUserLoggedIn (state) {
             return state.user !== null
         }

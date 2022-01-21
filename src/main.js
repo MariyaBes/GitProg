@@ -26,6 +26,8 @@ new Vue({
   };
   // Initialize Firebase
   fb.initializeApp(firebaseConfig);
+  fb.analytics();
+  
   fb.auth().onAuthStateChanged(user => {
     //здесь можно обновить пользователя в store
     if (user) {
