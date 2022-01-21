@@ -83,7 +83,7 @@ export default {
                 promo: this.promo,
                 src: "https://wallpapershome.ru/images/pages/pic_h/23676.jpg"
                 }
-        this.$store.dispatch("createAd", ad)
+        this.$store.dispatch("createAds", ad)
         .then(() => {
             this.$router.push("/list")
         })

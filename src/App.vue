@@ -28,7 +28,7 @@
               <v-list-item-title>{{ link.title }}</v-list-item-title>
             </v-list-item-content>
             </v-list-item>
-            <v-list-item>
+            <v-list-item
               @click="onLogout"
               v-if="isUserLoggedIn"
               >
