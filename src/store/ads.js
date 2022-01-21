@@ -1,4 +1,5 @@
 import fb from 'firebase'
+
 class Ad {
     constructor (title, desc, ownerId, src = '', promo = false, id = null) {
       this.title = title
@@ -10,9 +11,9 @@ class Ad {
     }
   }  
 
-export default{
-    state:{
-        ads:[/*
+export default {
+	state: {
+		ads:[
 			{
 				title:"Galaxy Tab A7",
 				desc:"Android 11 Qualcomm SM6115 Snapdragon 64GB 3GB",
@@ -55,7 +56,7 @@ export default{
 				src: "https://www.iphones.ru/wp-content/uploads/2021/10/ipad-mini-6-review-iphonesru-10.jpg",
 				id:"6"
 			}
-    */]
+    ]
     },
     mutations: {
         createAd(state, payload){
@@ -67,24 +68,39 @@ export default{
         
     },
     actions: {
-        async createAd ({commit, getters}, payload) {
+        createAd({commit}, payload){
+            payload.id = Math.random()
+            commit('createAd', payload)
+        },
+        async createAds ({commit, getters}, payload) {
             commit('clearError')
             commit('setLoading', true)
+            const image = payload.image
       
             try {
               const newAd = new Ad(
                 payload.title,
                 payload.desc,
                 getters.user.id,
-                payload.src,
+                "",
                 payload.promo,
                 payload.id
             )
               const fbValue = await fb.database().ref('ads').push(newAd)
+              const imageExt = image.name.slice(image.name.lastIndexOf("."))
+
+              await fb.storage().ref().child(`ads/${fbValue.key}.${imageExt}`).put(image).then(snapshot => {
+                snapshot.ref.getDownloadURL().then((downloadURL) => {
+                  const src = downloadURL
+                  fb.database().ref("ads").child(fbValue.key).update({ src })
+      
               commit('setLoading', false)
               commit('createAd', {
                 ...newAd,
-                id:fbValue.key
+                id: fbValue.key,
+                src
+                })
+              })
               })
             } catch (error) {
               commit('setError', error.message)
@@ -101,8 +117,9 @@ export default{
                 const fbVal = await fb.database().ref('ads').once('value')
                 const ads = fbVal.val()
                 console.log(ads)
-                const resultAds = [
-                  Object.keys(ads).forEach(key => {
+                //val()
+                const resultAds = []
+                Object.keys(ads).forEach(key => {
                     const ad = ads[key]
                     resultAds.push(
                       new Ad(
@@ -115,8 +132,9 @@ export default{
                       )
                     )
                   })
-                ]
                   commit('loadAds', resultAds)
+
+                  
                 
             }  catch (error) {
                 commit('setError', error.message)

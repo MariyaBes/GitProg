@@ -64,19 +64,20 @@
 
 <script>
 export default {
-  computed:  { 
-	promoAds() {
-		return this.$store.getters.promoAds
-	},
-	ads() {
-		return this.$store.getters.ads
-	},
-	loading () {
+	computed:  { 
+		promoAds() {
+			return this.$store.getters.promoAds
+		},
+		ads() {
+			return this.$store.getters.ads
+		},
+		loading() {
 		return this.$store.getters.loading
 	}
-} 
+}
 } 
 </script>
+
 <style scoped>
 	.ad-link {
 		position:absolute;

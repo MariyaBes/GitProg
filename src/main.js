@@ -29,12 +29,11 @@ new Vue({
   fb.analytics();
 
   fb.auth().onAuthStateChanged(user => {
-    //здесь можно обновить пользователя в store
     if (user) {
-      this.$store.dispatch('autoLoginUser', user)
+      this.$store.dispatch('autoLoginUser', user.uid)
     }
-  })
+ })
 
-  this.$store.dispatch('fetchAds')
+ this.$store.dispatch('fetchAds')
 }
 }).$mount('#app')

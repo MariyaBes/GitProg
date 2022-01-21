@@ -89,7 +89,7 @@ export default {
                 title: this.title,
                 desc: this.description,
                 promo: this.promo,
-                src: "https://wallpapershome.ru/images/pages/pic_h/23676.jpg"
+                image: this.image
                 }
         this.$store.dispatch("createAds", ad)
         .then(() => {

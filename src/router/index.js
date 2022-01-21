@@ -11,11 +11,11 @@ import Orders from '@/components/User/Orders'
 export default new Router({
 	routes: [
 	{
-		path:"/",
+		path:"",
 		name:"home",
 		component: Home
 	},
-    {
+	{
 		path:"/ad/:id",
 		props: true,
 		name:"ad",
@@ -47,7 +47,7 @@ export default new Router({
 		path: "/orders",
 		name: "orders",
 		component: Orders,
-		beforeEnter: AuthGuard
+		beforeEnter: AuthGuard 	
 	}
 	],
 	mode: 'history'

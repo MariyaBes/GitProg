@@ -86,37 +86,38 @@ export default {
   data() {
     return {
       drawer: false,
+      
     }
   },
-  computed:{
-    error (){
+  methods: {
+    closeError () {
+			this.$store.dispatch('clearError')
+		},
+    onLogout () {
+      this.$store.dispatch('logoutUser')
+  this.$router.push("/")
+    }
+  },
+  computed: {
+    error () {
       return this.$store.getters.error
     },
-    isUserLoggedIn (){
+    isUserLoggedIn () {
       return this.$store.getters.isUserLoggedIn
     },
-    links (){
-      if (this.isUserLoggedIn){
+    links () {
+      if (this.isUserLoggedIn) {
         return [
-          {title:"Orders",icon:"mdi-bookmark-multiple-outline", url:"/orders"},
-          {title:"New ad", icon:"mdi-note-plus-outline", url:"/new"},
-          {title:"My ads", icon:"mdi-view-list-outline", url:"/list"}
+        {title:"Orders", icon:"mdi-bookmark-multiple-outline", url:"/orders"},
+        {title:"New ad", icon:"mdi-note-plus-outline", url:"/new"},
+        {title:"My ads", icon:"mdi-view-list-outline", url:"/list"}
         ]
       } else {
         return [
-          {title:"Login", icon:"mdi-account-box", url:"/login"},
-          {title:"Registration",icon:"mdi-account-plus", url:"/registration"},
+        {title:"Login", icon:"mdi-lock", url:"/login"},
+        {title:"Registration", icon:"mdi-face", url:"/registration"},
         ]
       }
-    }
-  },
-  methods:{
-    closeError(){
-      this.$store.dispatch('clearError')
-    },
-    onLogout(){
-      this.$store.dispatch('logoutUser')
-      this.$router.push("/")
     }
   }
 };

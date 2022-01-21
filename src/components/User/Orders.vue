@@ -3,14 +3,14 @@
 		<v-layout row> 
 		<v-flex xs12 sm6 offset-sm3>
 					<h1 class="text--secondary mb-3 mt-3">Orders</h1>
-	<v-card
-    class="mx-auto"
-    max-width="300"
-    tile
-  >
-    <v-list subheader
-    two-line
-    flat>
+          <v-card
+            class="mx-auto"
+            max-width="300"
+            tile
+          >
+          <v-list subheader
+          two-line
+          flat>
         <v-list-item v-for="order in orders" :key="order.id">
           
           <v-list-item-content>
@@ -81,7 +81,7 @@
           },
           {
             id:"128",
-            name:"Mark",
+            name:"Ervin",
             phone:"+79780179662",
             adId:"6",
             done:true
@@ -89,11 +89,11 @@
         ]
       }
     },
-    mathods:{
-      markDone(order){
-        order.done=!order.done
-        console.log(order.done)
-      }
-    } 
-  }
+	methods: {
+		markDone(order) {
+			order.done = !order.done
+			console.log(order.done)
+		}
+	}
+} 
 </script>
