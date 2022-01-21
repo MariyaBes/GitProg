@@ -55,6 +55,11 @@ export default {
 			]
 		} 
 	},
+	created (){
+		if (this.$router.query['loginError']) {
+			this.$store.dispatch('setError', 'Please login to  access this page')
+		}
+	},
 	computed: {
 	loading() {
 		return this.$store.getters.loading
