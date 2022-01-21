@@ -84,7 +84,7 @@ export default{
               commit('setLoading', false)
               commit('createAd', {
                 ...newAd,
-                id: fbValue.key
+                id:fbValue.key
               })
             } catch (error) {
               commit('setError', error.message)
@@ -101,7 +101,6 @@ export default{
                 const fbVal = await fb.database().ref('ads').once('value')
                 const ads = fbVal.val()
                 console.log(ads)
-                console.val()
                 const resultAds = [
                   Object.keys(ads).forEach(key => {
                     const ad = ads[key]

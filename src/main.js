@@ -15,7 +15,7 @@ new Vue({
   router:router,
   store,
   created(){
-    var firebaseConfig = {
+    const firebaseConfig = {
       apiKey: "AIzaSyAB_xRp5V9UDL0p2EZ_3iIk5PjNGLDLULM",
       authDomain: "ad-pro-832f4.firebaseapp.com",
       projectId: "ad-pro-832f4",
@@ -26,7 +26,8 @@ new Vue({
   };
   // Initialize Firebase
   fb.initializeApp(firebaseConfig);
-  
+  fb.analytics();
+
   fb.auth().onAuthStateChanged(user => {
     //здесь можно обновить пользователя в store
     if (user) {
