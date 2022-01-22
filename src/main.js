@@ -5,6 +5,8 @@ import vuetify from './plugins/vuetify'
 import router from './router/index'
 import store from './store'
 import fb from 'firebase'
+//import { getAnalytics } from "firebase/analytics";
+//import { getAnalytics } from "firebase/analytics";
 
 Vue.use(Router)
 Vue.config.productionTip = false
@@ -25,6 +27,8 @@ new Vue({
       measurementId: "G-QJQCV7GPN1"
   };
   // Initialize Firebase
+  //const analytics = getAnalytics();
+
   fb.initializeApp(firebaseConfig);
   fb.analytics();
 

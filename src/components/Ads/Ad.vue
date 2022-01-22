@@ -4,7 +4,7 @@
 			<v-flex xs12>
 				<v-card class="mt-5" v-if="!loading">
 							<v-img 
-							height="300px"
+							height="500px"
 							:src="ad.src">
 							</v-img>
 							<v-card-text>
@@ -13,7 +13,7 @@
 							</v-card-text>
 							<v-card-actions>
 								<v-spacer></v-spacer>
-								<modal-dialog :ad="ad">
+								<modal-dialog :ad="ad" v-if="isOwner">
 								</modal-dialog>
 								<v-btn text class="success">Buy</v-btn>
 							</v-card-actions>
@@ -40,16 +40,19 @@
 <script>
 import EditAdModal from './EditAdModal'
 export default {
-    props:['id'],
-    computed:{
-        ad(){
-            const id=this.id
-            return this.$store.getters.adById(id)
-        },
-		loading(){
+	props: ['id'],
+	computed: {
+		ad() {
+			const id = this.id
+			return this.$store.getters.adById(id)
+		},
+		loading () {
 			return this.$store.getters.loading
+		},
+		isOwner () {
+			return this.ad.ownerId === this.$store.getters.user.id
 		}
-    },
+	},
 	components: {
 		'modal-dialog': EditAdModal
 	}

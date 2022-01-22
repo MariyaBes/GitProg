@@ -65,13 +65,13 @@ export default {
         loadAds (state, payload) {
             state.ads = payload
         },
-        updateAd (state, {title, desc, id}){
-          const ad = state.ads.find (a => {
+        updateAd (state, {title, desc, id}) {
+          const ad = state.ads.find(a => {
             return a.id === id
           })
           ad.title = title
           ad.desc = desc
-        }
+        }  
     },
     actions: {
         createAd({commit}, payload){
@@ -145,18 +145,18 @@ export default {
                 throw error
             }
         },
-        async updateAd ({commit}, {title, desc, id}) {
+        async updateAd ({commit},{title,desc,id}) {
           commit('clearError')
-          commit('setLoading', true)
-          try {
-            await fb.database().ref("ads").child(id).update({title, desc})
-            commit('updateAd', {title, desc, id})
-            commit('setLoading', false)
-          } catch (error) {
-            commit('setError', error.message)
-            commit('setLoading', false)
-            throw error
-          }
+            commit('setLoading', true)
+            try {
+              await fb.database().ref("ads").child(id).update({ title, desc })
+              commit('updateAd',{ title, desc, id})
+              commit('setLoading', false)
+            } catch (error) {
+              commit('setError', error.message)
+              commit('setLoading', false)
+              throw error
+            }
         }
     },   
 	getters: {
@@ -176,5 +176,5 @@ export default {
             return state.ads.find(ad => ad.id == id)
             }
         }        
-}
+    }
 }
