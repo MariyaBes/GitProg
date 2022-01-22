@@ -13,7 +13,7 @@ class Ad {
 
 export default {
 	state: {
-		ads:[
+		ads:[/*
 			{
 				title:"Galaxy Tab A7",
 				desc:"Android 11 Qualcomm SM6115 Snapdragon 64GB 3GB",
@@ -56,7 +56,7 @@ export default {
 				src: "https://www.iphones.ru/wp-content/uploads/2021/10/ipad-mini-6-review-iphonesru-10.jpg",
 				id:"6"
 			}
-    ]
+    */]
     },
     mutations: {
         createAd(state, payload){

@@ -5,10 +5,12 @@ import vuetify from './plugins/vuetify'
 import router from './router/index'
 import store from './store'
 import fb from 'firebase'
+import BuyModalComponent from '@/components/Shared/BuyModal'
 //import { getAnalytics } from "firebase/analytics";
 //import { getAnalytics } from "firebase/analytics";
 
 Vue.use(Router)
+Vue.component('app-vue-modal', BuyModalComponent)
 Vue.config.productionTip = false
 
 new Vue({

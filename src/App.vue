@@ -59,7 +59,7 @@
        @click="onLogout"
        v-if ="isUserLoggedIn"
        >
-       <v-icon left >mdi-exit-to-app</v-icon>
+       <v-icon left>mdi-exit-to-app</v-icon>
        Logout
        </v-btn>
     </v-toolbar-items>

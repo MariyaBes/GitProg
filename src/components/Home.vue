@@ -37,9 +37,7 @@
 					<v-card-actions>
 					<v-spacer></v-spacer>
 					<v-btn text :to="'/ad/' + ad.id">Open</v-btn>
-					<v-btn dark raised color="#B85252">
-						Buy
-					</v-btn>
+					<app-vue-modal :ad="ad"></app-vue-modal>
 					</v-card-actions>				
 				</v-card>
 			</v-flex>
