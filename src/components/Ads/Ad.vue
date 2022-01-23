@@ -16,7 +16,6 @@
 								<modal-dialog :ad="ad" v-if="isOwner">
 								</modal-dialog>
 								<app-vue-modal :ad="ad"></app-vue-modal>
-								<v-btn dark raised color="#B85252">Buy</v-btn>
 							</v-card-actions>
 				</v-card>
 				<div v-else>
